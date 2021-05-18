@@ -1,6 +1,8 @@
 package live.chanakancloud.alphabetatheta;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import live.chanakancloud.alphabetatheta.Screens.PlayScreen;
 
@@ -12,15 +14,21 @@ public class AlphaBetaTheta extends Game {
 	public static final short FP_BIT = 4;
 	public static final short GEMS_BIT = 8;
 	public static final short DESTROYED_BIT = 16;
+	public static final short FRIEND_BIT = 32;
+	public static final short GROUND_BIT = 64;
 	public static final short DEFAULT_BIT = 1;
+	public static AssetManager manager;
 	public SpriteBatch batch;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		manager = new AssetManager();
+		manager.load("music/music.wav", Music.class);
+		manager.finishLoading();
+
 		setScreen(new PlayScreen(this));
 	}
-
 	@Override
 	public void render () {
 		super.render();

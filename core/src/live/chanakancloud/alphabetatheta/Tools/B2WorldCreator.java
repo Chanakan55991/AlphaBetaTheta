@@ -9,7 +9,12 @@ import live.chanakancloud.alphabetatheta.Sprites.FallingPlatform;
 import live.chanakancloud.alphabetatheta.Sprites.Gems;
 
 public class B2WorldCreator {
+    private static TiledMap mapp;
+    private static World worldd;
+
     public B2WorldCreator(World world, TiledMap map) {
+        mapp = map;
+        worldd = world;
 
         BodyDef bodyDef = new BodyDef();
         PolygonShape shape = new PolygonShape();
@@ -26,7 +31,7 @@ public class B2WorldCreator {
             body = world.createBody(bodyDef);
             shape.setAsBox(rect.getWidth() / 2 / AlphaBetaTheta.PPM, rect.getHeight() / 2 / AlphaBetaTheta.PPM);
             fixtureDef.shape = shape;
-            body.createFixture(fixtureDef);
+            body.createFixture(fixtureDef).setUserData("ground");
         }
 
         for(RectangleMapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class))
@@ -47,5 +52,14 @@ public class B2WorldCreator {
             new SPRITECLASS(world, map, rect);
         }
     */
+    }
+
+    public static void createNewFallingPlatform()
+    {
+        for(RectangleMapObject object : mapp.getLayers().get(3).getObjects().getByType(RectangleMapObject.class))
+        {
+            Rectangle rect = object.getRectangle();
+            new FallingPlatform(worldd, mapp, rect);
+        }
     }
 }

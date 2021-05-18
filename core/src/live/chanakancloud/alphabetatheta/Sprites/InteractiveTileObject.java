@@ -1,7 +1,9 @@
 package live.chanakancloud.alphabetatheta.Sprites;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import live.chanakancloud.alphabetatheta.AlphaBetaTheta;
@@ -37,4 +39,28 @@ public abstract class InteractiveTileObject {
     }
 
     public abstract void onFeetHit();
+    public abstract void onBodyHit();
+
+    public void setCategoryFilter(short filterBit)
+    {
+        Filter filter = new Filter();
+        filter.categoryBits = filterBit;
+        fixture.setFilterData(filter);
+
+        if(filterBit == AlphaBetaTheta.DESTROYED_BIT)
+        {
+            Gdx.app.postRunnable(new Runnable() {
+                @Override
+                public void run () {
+                    world.destroyBody(fixture.getBody());
+                }
+            });
+        }
+    }
+
+    public TiledMapTileLayer.Cell getCell()
+    {
+        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
+        return layer.getCell((int)(body.getPosition().x * AlphaBetaTheta.PPM / 16), (int)(body.getPosition().y * AlphaBetaTheta.PPM / 16));
+    }
 }

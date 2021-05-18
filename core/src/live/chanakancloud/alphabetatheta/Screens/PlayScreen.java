@@ -3,6 +3,7 @@ package live.chanakancloud.alphabetatheta.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -17,6 +18,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import live.chanakancloud.alphabetatheta.AlphaBetaTheta;
 import live.chanakancloud.alphabetatheta.Scenes.Hud;
 import live.chanakancloud.alphabetatheta.Sprites.Ash;
+import live.chanakancloud.alphabetatheta.Sprites.Friend1;
 import live.chanakancloud.alphabetatheta.Tools.B2WorldCreator;
 import live.chanakancloud.alphabetatheta.Tools.WorldContactListener;
 
@@ -33,6 +35,12 @@ public class PlayScreen implements Screen {
     private final World world;
     private final Box2DDebugRenderer b2dr;
     private final Ash player;
+    private final Friend1 friend;
+
+    private Music music;
+
+    public static boolean isJumping;
+    public static boolean isInStory = false;
 
     public PlayScreen(AlphaBetaTheta game) {
         atlas = new TextureAtlas("ABTSprites.pack");
@@ -50,8 +58,13 @@ public class PlayScreen implements Screen {
         new B2WorldCreator(world, map);
 
         player = new Ash(world, this);
+        friend = new Friend1(this, 12.57f,0.87f);
 
         world.setContactListener(new WorldContactListener());
+
+        music = AlphaBetaTheta.manager.get("music/music.wav", Music.class);
+        music.setLooping(true);
+        music.play();
     }
 
     public TextureAtlas getAtlas() {
@@ -64,13 +77,14 @@ public class PlayScreen implements Screen {
     }
 
     public void handleInput() {
-        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && !isJumping && !isInStory) {
             player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
+            isJumping = true;
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.D) && player.b2body.getLinearVelocity().x <= 2) {
+        if(Gdx.input.isKeyPressed(Input.Keys.D) && player.b2body.getLinearVelocity().x <= 2 && !isInStory) {
             player.b2body.applyLinearImpulse(new Vector2(0.1f, 0), player.b2body.getWorldCenter(), true);
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.A) && player.b2body.getLinearVelocity().x >= -2) {
+        if(Gdx.input.isKeyPressed(Input.Keys.A) && player.b2body.getLinearVelocity().x >= -2 && !isInStory) {
             player.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), player.b2body.getWorldCenter(), true);
         }
     }
@@ -79,6 +93,8 @@ public class PlayScreen implements Screen {
         handleInput();
         world.step(1 / 60f, 6, 2);
         player.update(delta);
+        friend.update(delta);
+        hud.update(delta);
         camera.position.x = player.b2body.getPosition().x;
         camera.update();
         renderer.setView(camera);
@@ -96,6 +112,7 @@ public class PlayScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
         player.draw(game.batch);
+        friend.draw(game.batch);
         game.batch.end();
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
@@ -128,5 +145,9 @@ public class PlayScreen implements Screen {
         world.dispose();
         b2dr.dispose();
         hud.dispose();
+    }
+
+    public World getWorld() {
+        return world;
     }
 }

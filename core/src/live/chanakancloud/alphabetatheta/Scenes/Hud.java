@@ -15,16 +15,19 @@ import live.chanakancloud.alphabetatheta.AlphaBetaTheta;
 public class Hud implements Disposable {
     public Stage stage;
 
-    Label countdownLabel;
-    Label scoreLabel;
-    Label timeLabel;
-    Label levelLabel;
-    Label worldLabel;
-    Label characterLabel;
+    private Label countdownLabel;
+    private static Label scoreLabel;
+    private Label timeLabel;
+    private Label levelLabel;
+    private float timeCount;
+    private Integer worldTimer;
+    private static Integer score;
+    private Label worldLabel;
+    private Label characterLabel;
 
     public Hud(SpriteBatch sb) {
-        Integer worldTimer = 300;
-        Integer score = 0;
+        worldTimer = 300;
+        score = 0;
 
         Viewport viewport = new FitViewport(AlphaBetaTheta.V_WIDTH, AlphaBetaTheta.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
@@ -48,6 +51,23 @@ public class Hud implements Disposable {
         table.add(countdownLabel).expandX();
 
         stage.addActor(table);
+    }
+
+    public void update(float delta)
+    {
+        timeCount += delta;
+        if(timeCount >= 1)
+        {
+            worldTimer--;
+            countdownLabel.setText(String.format("%03d", worldTimer));
+            timeCount = 0;
+        }
+    }
+
+    public static void addScore(int value)
+    {
+        score += value;
+        scoreLabel.setText(String.format("%06d", score));
     }
 
     @Override

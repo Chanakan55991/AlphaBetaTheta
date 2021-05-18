@@ -3,7 +3,28 @@ ABTSprites.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+friend3walking
+  rotate: false
+  xy: 1, 69
+  size: 448, 32
+  orig: 448, 32
+  offset: 0, 0
+  index: -1
+friendwalking
+  rotate: false
+  xy: 1, 35
+  size: 448, 32
+  orig: 448, 32
+  offset: 0, 0
+  index: -1
 ashwalking
+  rotate: false
+  xy: 451, 69
+  size: 448, 32
+  orig: 448, 32
+  offset: 0, 0
+  index: -1
+friend2walking
   rotate: false
   xy: 1, 1
   size: 448, 32
@@ -12,7 +33,28 @@ ashwalking
   index: -1
 ashidle
   rotate: false
+  xy: 451, 35
+  size: 192, 32
+  orig: 192, 32
+  offset: 0, 0
+  index: -1
+friend3idle
+  rotate: false
   xy: 451, 1
+  size: 192, 32
+  orig: 192, 32
+  offset: 0, 0
+  index: -1
+friend2idle
+  rotate: false
+  xy: 645, 35
+  size: 192, 32
+  orig: 192, 32
+  offset: 0, 0
+  index: -1
+friendidle
+  rotate: false
+  xy: 645, 1
   size: 192, 32
   orig: 192, 32
   offset: 0, 0

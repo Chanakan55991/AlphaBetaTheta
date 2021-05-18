@@ -33,14 +33,17 @@ public class Ash extends Sprite {
         runningRight = true;
 
         Array<TextureRegion> frames = new Array<>();
-        for(int i = 0; i < 14; i++) {
+        /*for(int i = 67; i < 80; i++) {
             frames.add(new TextureRegion(getTexture(), i * 32, 0, 32, 32));
+        }*/
+        for (int i = 0; i < 14; i++) {
+            frames.add(new TextureRegion(screen.getAtlas().findRegion("ashwalking"), i * 32, 0, 32, 32));
         }
         ashRun = new Animation<>(0.1f, frames);
         frames.clear();
         defineAsh();
-        for(int i = 14; i < 20; i++) {
-            frames.add(new TextureRegion(getTexture(), i * 32, 0, 32, 32));
+        for(int i = 0; i < 6; i++) {
+            frames.add(new TextureRegion(screen.getAtlas().findRegion("ashidle"), i * 32, 0, 32, 32));
         }
         ashStand = new Animation<>(0.1f, frames);
         frames.clear();
@@ -114,7 +117,7 @@ public class Ash extends Sprite {
         fdef.filter.maskBits = AlphaBetaTheta.DEFAULT_BIT | AlphaBetaTheta.GEMS_BIT | AlphaBetaTheta.FP_BIT;
 
         fdef.shape = shape;
-        b2body.createFixture(fdef);
-        b2body.createFixture(fdef2);
+        b2body.createFixture(fdef).setUserData("body");
+        b2body.createFixture(fdef2).setUserData("feet");
     }
 }

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="22">
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="26">
  <tileset firstgid="1" source="../../../StringStar.tsx"/>
  <tileset firstgid="199" source="../../../background_0.tsx"/>
  <tileset firstgid="397" source="nature-paltformer-tileset-16x16.tsx"/>
  <layer id="1" name="background" width="240" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt1NOSnAEUhdGe2LZt27ZtJxPbmdh8r4mdTGzbziTrKfqvrjq7zrr9Lk9uKpU6ySlOc4aznOM8F7jIJS5zhatc4zp53CA3OtGJTto7N7nFbe5wl3vc5wEPecRjnvCUZzznBS95FZ3oRCeRzmve8JZ3vOcDH/nEZ77wlW985wc/+cVv/kQnOtFJpPOXfP6RynIUoCCFKEwRilKM4pSgJKUoTZms6EQnOkl0ylKO8lSgIpWoTBWqUo3q1KAmtahNHepSLzrRiU4info0oCGNaEwTmtKM5rSgJa1oTRva0o72dIhOdKKTSKcjnehMF7rSje70oCe96E0f+tKP/gxgIIOiE53oJNIZzBCGMozhjGAkoxjNGMYyjvFMYCKTmMyU6EQnOol0pjKN6cxgJrOYzRzmMo/5LGAhi8hmMUtYGp3oRCeRzjKWs4KVrGI1a1jLOtazgY1sYjNb2Mo2cqITnegk0tnODnayi93sYS/72M8BDnKIwxzhKMc4zonoRCc6iXQyYZnyC6MTnXR3MmGZ8gujE510d/4DMAxr/g==
+   eJzt1dOOpVEQgNFzxrZt27Zt27Ztv1ePbdu2Z1YyrzDpv09Slb1uv9RV7axUKnWUYxznBCc5xWnOcJZznOcCF7nEZa5wlazoRCc62d65xnVucJNb3OYOd7nHfR7wkEc85glPecbz6EQnOol0XvCSV7zmDW95x3s+8JFPfOYLX/nGd37wMzrRiU4inV/85g+ptEcucpOHvOQjPwUoSCEKU4SiFEtHJzrRSaJTnBKUpBSlKUNZylGeClSkEpWpQlWqUZ0a0YlOdBLp1KQWtalDXepRnwY0pBGNaUJTmtGcFrSkVXSiE51EOq1pQ1va0Z4OdKQTnelCV7rRnR70pBe96ROd6EQnkU5f+tGfAQxkEIMZwlCGMZwRjGQUoxnDWMZF5792VuWwfaKTczvjmcBEJjGZKUxlGtOZwUxmMZs5zGUe81kQnehEJ5HOQhaxmCUsZRnLWcHK9L//YDVrWMs61rOBjWyKTnSik0hnM1vYyja2s4Od7GI3e9jLPvZzgIMc4jBHohOd6CTSyYTJlFsYnehkdycTJlNuYXSik92dv/eCbCA=
   </data>
  </layer>
  <layer id="2" name="graphics" width="240" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt1sdKxFAYhuF4I/YLsC90Z1+oC7GXWajYOyr2srW31Yx91IXg2nIJXpWvECFKDJlJ5MwM3wsPIYET/sAJiWWpMMpGDnKRh3wUoNDgTEopfxWhGCUoRRnKUWFyKKWUr6pRg1rUoR4NaDQ5lFLKV21oRwc60YVu9JgcSimXetGHfkQMz5IqDWMEoxjDOCYwaXIopVyawjRmMGtwjjnM4yPLsqL20VTLWMEq1rCODWyaG0kp17awjZ0E1lSiKuQ5njz4bQCDGAo4yy72sI8DHOIIxwHvq1TYneAUZzhHzD5+XY/a57Ffa5rQHPIccYc3vDvO/baARSwhEuD7fYFLXOEaN7jFXfK3/FELWn1c87quMq/nNPBX3+/qPR4cHj3WeH2zTVAqSPE0kMnPq1SQvP5BU8V/PW8qUCpIzr30glfLzD7W+6tU4pnev3p/lUq+TzboLlQ=
+   eJzt1sdKxFAYhuF4I/YLsC90Z1/ozl5moWLvqFhH3drbasY+6kJxbbkEr8pXiBAkhsREzszwvfAQEibhD5xDxrJUFOUiD/koQCGKUGxwJqWUv0pQijKUowKVqDI5lFLKV7WoQz0a0IgmNJscSinlqza0owOd6EI3ekwOpZRLvehDP2KGZ0mXhjGCUYxhHBOYNDmUUi5NYRozmDU4xxzm8ZFjWQn7aKplrGAVa1jHBuLmRlLKtU1sYTvAPdWoiXiORw9+G8AghkLOsoNd7GEfBzjEUcjnKhV1xzjBKc6QtI9f1xP2efLHPS1ojXiOlMMb3h3nflvAIpYQC/H9PscFLnGFa9zgNuBzngJcD/JblZ09Z4Df+t6rd7h3ePC4x+ubbYJSYUplgGx+X6XC5PUfNF381/umA6XC5FxLL3i1zKxj7V+lgmd6/Wr/KvX3PgHlGC8g
   </data>
  </layer>
  <objectgroup id="3" name="ground">
@@ -18,10 +18,14 @@
   <object id="10" x="752.042" y="96.0026" width="111.958" height="47.9974"/>
   <object id="21" x="960" y="127.993" width="576" height="80.0109"/>
  </objectgroup>
- <objectgroup id="5" name="bricks"/>
+ <objectgroup id="5" name="falling_platform">
+  <object id="22" x="1696" y="111.993" width="15.9999" height="16"/>
+  <object id="23" x="1776" y="111.999" width="16" height="16"/>
+  <object id="24" x="1872" y="112" width="16" height="16"/>
+  <object id="25" x="1599.99" y="112.001" width="16" height="16"/>
+ </objectgroup>
  <objectgroup id="6" name="gems">
   <object id="13" x="784.001" y="80.0005" width="15.9555" height="15.9961"/>
   <object id="20" x="816.043" y="80.0005" width="15.9521" height="15.9983"/>
  </objectgroup>
- <objectgroup id="7" name="pipes"/>
 </map>
