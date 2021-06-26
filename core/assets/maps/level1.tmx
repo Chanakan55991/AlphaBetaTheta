@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="36">
+ <tileset firstgid="1" source="../StringStar.tsx"/>
+ <tileset firstgid="199" source="../background_0.tsx"/>
+ <tileset firstgid="397" source="../nature-paltformer-tileset-16x16.tsx"/>
+ <tileset firstgid="474" source="../tilesets/spikes.tsx"/>
+ <layer id="1" name="background" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt1dOOpVEQgNFzxrZt27Zt27Ztv1ePbdu2Z1YyrzDpv09Slb1uv9RV7axUKnWUYxznBCc5xWnOcJZznOcCF7nEZa5wlazoRCc62d65xnVucJNb3OYOd7nHfR7wkEc85glPecbz6EQnOol0XvCSV7zmDW95x3s+8JFPfOYLX/nGd37wMzrRiU4inV/85g+ptEcucpOHvOQjPwUoSCEKU4SiFEtHJzrRSaJTnBKUpBSlKUNZylGeClSkEpWpQlWqUZ0a0YlOdBLp1KQWtalDXepRnwY0pBGNaUJTmtGcFrSkVXSiE51EOq1pQ1va0Z4OdKQTnelCV7rRnR70pBe96ROd6EQnkU5f+tGfAQxkEIMZwlCGMZwRjGQUoxnDWMZF5792VuWwfaKTczvjmcBEJjGZKUxlGtOZwUxmMZs5zGUe81kQnehEJ5HOQhaxmCUsZRnLWcHK9L//YDVrWMs61rOBjWyKTnSik0hnM1vYyja2s4Od7GI3e9jLPvZzgIMc4jBHohOd6CTSyYTJlFsYnehkdycTJlNuYXSik92dv/eCbCA=
+  </data>
+ </layer>
+ <layer id="2" name="graphics" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt1rdOw1AUgGHnRegPQB+AiT7ARi8ZANG7ANHLSm8DSugBhkjMlEfgEXga/oggrEiE2DE5N+H80icrkRwd32tHtizNi7KQjRzkIg/5KBCcSdO0xCpEEYpRglKUoVxyKE3TEqoaNahFHerRgEbJoTRNS6gWtKIN7ehAJ7okh8qwwjaa+7rRg174hWcxpUEMYRgjGMUYxiWHyrBCOPN9HjX3TWASU5gWnGMGs3hjTwPRo1SLWMIyVrCKNazLjeRpYUNpztvAJrYcnFOBSo/n8GJf+9CPgSRn2cYOdrGHfRzgMMnfdVOVx/9jkfUMGUpz3hGOcYJTBKPHyPeB6OdgzDlNaPZ4Dvs+vuDVcr6vc5jHAvxJ3PfnuMAlrnCNG9y6/0kjMvnZ1efXsh7TwE997eEd7m0e4pwj/b5n4vvfu++bPdOfXX1+5dc/1XskfS2xpP8/4pFeG31+f8++FrHvoKb4q+tV6e+/Z1+LJzxbMvuQqj2SvhZl7r2Rjkmvf6r3SPpalLn3Rjr2AflnZbg=
+  </data>
+ </layer>
+ <objectgroup id="10" name="spike">
+  <object id="35" x="2064" y="138" width="47.9956" height="5.99711"/>
+ </objectgroup>
+ <objectgroup id="3" name="ground">
+  <object id="5" x="-0.25" y="128.005" width="656.245" height="80.0013"/>
+  <object id="10" x="752.042" y="96.0026" width="111.958" height="47.9974"/>
+  <object id="21" x="960" y="127.993" width="576" height="80.0109"/>
+  <object id="27" x="1535.99" y="143.997" width="672.324" height="64.0028"/>
+  <object id="28" x="2160.11" y="128.082" width="48.2482" height="15.9946"/>
+  <object id="29" x="2192.03" y="96.0049" width="16.3124" height="16.0571"/>
+  <object id="30" x="2176.02" y="112.052" width="32.2689" height="16.0571"/>
+  <object id="31" x="2208.33" y="80.1159" width="607.725" height="127.894"/>
+ </objectgroup>
+ <objectgroup id="9" name="end_hole">
+  <object id="34" x="2752" y="64" width="16.0083" height="16.1021"/>
+ </objectgroup>
+ <objectgroup id="6" name="gems">
+  <object id="13" x="784.001" y="80.0005" width="15.9555" height="15.9961"/>
+  <object id="20" x="816.043" y="80.0005" width="15.9521" height="15.9983"/>
+ </objectgroup>
+</map>

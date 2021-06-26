@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="36">
+ <tileset firstgid="1" source="../StringStar.tsx"/>
+ <tileset firstgid="199" source="../background_0.tsx"/>
+ <tileset firstgid="397" source="../nature-paltformer-tileset-16x16.tsx"/>
+ <tileset firstgid="474" source="../tilesets/Terrain (16x16).tsx"/>
+ <layer id="1" name="background" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt00ERgDAQBLArD4p/eYAIigIOGTuTRyTkHFUXEOduT1tAnHf4C6n8hVz+Qi5/IZe/kMtfyOUv5PIXcvkLufyFXP/ffauaQJyjfeuNluc=
+  </data>
+ </layer>
+ <layer id="2" name="graphics" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt07ENACAMA8EMy2a0DMkMKRCxdCd978ZVAAAAAADAK+v3AAAAIp1mwBy7GTCH/0Iu/4UcF1yuH2E=
+  </data>
+ </layer>
+ <objectgroup id="3" name="ground">
+  <object id="35" x="64.0117" y="144.012" width="191.988" height="64.0278"/>
+ </objectgroup>
+ <objectgroup id="9" name="end_hole"/>
+ <objectgroup id="5" name="falling_platform"/>
+ <objectgroup id="6" name="gems"/>
+</map>

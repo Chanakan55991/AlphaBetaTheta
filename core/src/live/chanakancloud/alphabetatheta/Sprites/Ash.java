@@ -12,9 +12,9 @@ import live.chanakancloud.alphabetatheta.Screens.PlayScreen;
 import static live.chanakancloud.alphabetatheta.AlphaBetaTheta.PPM;
 
 public class Ash extends Sprite {
-    public enum State {FALLING, JUMPING, STANDING, RUNNING}
+    public enum State {FALLING, JUMPING, STANDING, RUNNING, DEAD}
 
-    public State currentState;
+    public static State currentState;
     public State previousState;
     public World world;
     public Body b2body;
@@ -23,6 +23,7 @@ public class Ash extends Sprite {
     private final Animation<TextureRegion> ashRun;
     private float stateTimer;
     private boolean runningRight;
+    private boolean ashIsDead;
 
     public Ash(World world, PlayScreen screen) {
         super(screen.getAtlas().findRegion("ashidle"));
@@ -55,6 +56,17 @@ public class Ash extends Sprite {
     public void update(float delta) {
         setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
         setRegion(getFrame(delta));
+        if(b2body.getPosition().y <= -4)
+            currentState = State.DEAD;
+
+    }
+
+    public boolean isDead() {
+        return ashIsDead;
+    }
+
+    public float getStateTimer() {
+        return stateTimer;
     }
 
     public TextureRegion getFrame(float delta) {

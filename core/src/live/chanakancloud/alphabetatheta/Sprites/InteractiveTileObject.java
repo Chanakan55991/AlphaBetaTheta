@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.utils.Timer;
 import live.chanakancloud.alphabetatheta.AlphaBetaTheta;
 
 public abstract class InteractiveTileObject {
@@ -14,6 +15,8 @@ public abstract class InteractiveTileObject {
     protected TiledMapTile tile;
     protected Rectangle bounds;
     protected Body body;
+    private boolean playerJustDead = false;
+    public static boolean isChangingWorld = false;
 
     protected Fixture fixture;
 
@@ -22,7 +25,6 @@ public abstract class InteractiveTileObject {
         this.world = world;
         this.map = map;
         this.bounds = bounds;
-
 
         BodyDef bdef = new BodyDef();
         FixtureDef fdef = new FixtureDef();
@@ -43,9 +45,21 @@ public abstract class InteractiveTileObject {
 
     public void setCategoryFilter(short filterBit)
     {
-        Filter filter = new Filter();
-        filter.categoryBits = filterBit;
-        fixture.setFilterData(filter);
+        if(isChangingWorld) return;
+        if(playerJustDead) return;
+        if(Ash.currentState == Ash.State.DEAD) {
+            playerJustDead = true;
+            Timer.schedule(new Timer.Task(){
+                @Override
+                public void run() {
+                    playerJustDead = false;
+                }
+            }, 3);
+            return;
+        }
+        //Filter filter = new Filter();
+        //filter.categoryBits = filterBit;
+        //fixture.setFilterData(filter);
 
         if(filterBit == AlphaBetaTheta.DESTROYED_BIT)
         {
@@ -60,6 +74,7 @@ public abstract class InteractiveTileObject {
 
     public TiledMapTileLayer.Cell getCell()
     {
+        if(body == null) return null;
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
         return layer.getCell((int)(body.getPosition().x * AlphaBetaTheta.PPM / 16), (int)(body.getPosition().y * AlphaBetaTheta.PPM / 16));
     }

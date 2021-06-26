@@ -23,13 +23,13 @@ import live.chanakancloud.alphabetatheta.Tools.B2WorldCreator;
 import live.chanakancloud.alphabetatheta.Tools.WorldContactListener;
 
 public class PlayScreen implements Screen {
-    private final AlphaBetaTheta game;
+    private static AlphaBetaTheta game;
     private final TextureAtlas atlas;
     private final OrthographicCamera camera;
     private final Viewport gamePort;
     private final Hud hud;
 
-    private final TiledMap map;
+    private TiledMap map;
     private final OrthogonalTiledMapRenderer renderer;
 
     private final World world;
@@ -41,15 +41,17 @@ public class PlayScreen implements Screen {
 
     public static boolean isJumping;
     public static boolean isInStory = false;
+    private String mapname;
 
-    public PlayScreen(AlphaBetaTheta game) {
+    public PlayScreen(AlphaBetaTheta game, String mapname) {
+        this.mapname = mapname;
         atlas = new TextureAtlas("ABTSprites.pack");
-        this.game = game;
+        PlayScreen.game = game;
         camera = new OrthographicCamera();
         gamePort = new FitViewport(AlphaBetaTheta.V_WIDTH / AlphaBetaTheta.PPM, AlphaBetaTheta.V_HEIGHT / AlphaBetaTheta.PPM, camera);
         hud = new Hud(game.batch);
         TmxMapLoader mapLoader = new TmxMapLoader();
-        map = mapLoader.load("level1.tmx");
+        map = mapLoader.load(mapname);
         renderer = new OrthogonalTiledMapRenderer(map, 1 / AlphaBetaTheta.PPM);
         camera.position.set(gamePort.getWorldWidth() / 2f, gamePort.getWorldHeight() / 2f, 0);
         b2dr = new Box2DDebugRenderer();
@@ -89,6 +91,10 @@ public class PlayScreen implements Screen {
         }
     }
 
+    public static void changeMap() {
+        game.setScreen(new PlayScreen(game,"maps/level2.tmx"));
+    }
+
     public void update(float delta) {
         handleInput();
         world.step(1 / 60f, 6, 2);
@@ -116,6 +122,15 @@ public class PlayScreen implements Screen {
         game.batch.end();
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
+
+        if(gameOver()) {
+            game.setScreen(new PlayScreen(game, mapname));
+            dispose();
+        }
+    }
+
+    public boolean gameOver() {
+        return Ash.currentState == Ash.State.DEAD;
     }
 
     @Override

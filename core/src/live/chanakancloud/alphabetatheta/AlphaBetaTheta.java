@@ -16,6 +16,7 @@ public class AlphaBetaTheta extends Game {
 	public static final short DESTROYED_BIT = 16;
 	public static final short FRIEND_BIT = 32;
 	public static final short GROUND_BIT = 64;
+	public static final short END_BIT = 128;
 	public static final short DEFAULT_BIT = 1;
 	public static AssetManager manager;
 	public SpriteBatch batch;
@@ -27,7 +28,7 @@ public class AlphaBetaTheta extends Game {
 		manager.load("music/music.wav", Music.class);
 		manager.finishLoading();
 
-		setScreen(new PlayScreen(this));
+		setScreen(new PlayScreen(this, "maps/level1.tmx"));
 	}
 	@Override
 	public void render () {

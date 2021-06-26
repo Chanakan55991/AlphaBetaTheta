@@ -5,8 +5,9 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import live.chanakancloud.alphabetatheta.AlphaBetaTheta;
-import live.chanakancloud.alphabetatheta.Sprites.FallingPlatform;
+import live.chanakancloud.alphabetatheta.Sprites.EndHole;
 import live.chanakancloud.alphabetatheta.Sprites.Gems;
+import live.chanakancloud.alphabetatheta.Sprites.Spike;
 
 public class B2WorldCreator {
     private static TiledMap mapp;
@@ -21,7 +22,7 @@ public class B2WorldCreator {
         FixtureDef fixtureDef = new FixtureDef();
         Body body;
 
-        for(RectangleMapObject object : map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class))
+        for(RectangleMapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class))
         {
             Rectangle rect = object.getRectangle();
 
@@ -34,16 +35,27 @@ public class B2WorldCreator {
             body.createFixture(fixtureDef).setUserData("ground");
         }
 
-        for(RectangleMapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class))
+        for(RectangleMapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class))
         {
             Rectangle rect = object.getRectangle();
             new Gems(world, map, rect);
         }
 
-        for(RectangleMapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class))
+        /*for(RectangleMapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class))
         {
             Rectangle rect = object.getRectangle();
             new FallingPlatform(world, map, rect);
+        }*/
+        for(RectangleMapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class))
+        {
+            Rectangle rect = object.getRectangle();
+            new EndHole(world, map, rect);
+        }
+
+        for(RectangleMapObject object : map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class))
+        {
+            Rectangle rect = object.getRectangle();
+            new Spike(world, map, rect);
         }
     /* TEMPLATE
         for(RectangleMapObject object : map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class))
@@ -52,14 +64,5 @@ public class B2WorldCreator {
             new SPRITECLASS(world, map, rect);
         }
     */
-    }
-
-    public static void createNewFallingPlatform()
-    {
-        for(RectangleMapObject object : mapp.getLayers().get(3).getObjects().getByType(RectangleMapObject.class))
-        {
-            Rectangle rect = object.getRectangle();
-            new FallingPlatform(worldd, mapp, rect);
-        }
     }
 }
